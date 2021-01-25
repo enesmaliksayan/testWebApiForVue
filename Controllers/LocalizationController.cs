@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Text.Json;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
 namespace WebApplication2.Controllers
 {
     [Route("[controller]")]
@@ -13,6 +18,7 @@ namespace WebApplication2.Controllers
         public IActionResult GetByLocaleKey(LocalizationRequest request)
         {
 
+<<<<<<< HEAD
             var data = new Dictionary<string, string>();
 
             if (request.locale == "en")
@@ -22,23 +28,47 @@ namespace WebApplication2.Controllers
                     { "404_Button", "Go To Home"},
                     { "login", "Login"},
                     { "logout", "Logout"}
+=======
+
+
+            var data = new Dictionary<string, string>();
+
+
+
+            if (request.locale == "en")
+            {
+                data = new Dictionary<string, string>{
+                    { "key_a", "val_en"},
+                    { "key_b", "val_en"}
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
                 };
             }
             else
             {
                 data = new Dictionary<string, string>{
+<<<<<<< HEAD
                     { "404", "Sayfa Bulunamadı!"},
                     { "404_Button", "Anasayfaya Git"},
                     { "login", "Giriş Yap"},
                     { "logout", "Çıkış Yap"}
+=======
+                    { "key_a", "val_tr"},
+                    { "key_b", "val_tr"}
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
                 };
             }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
             var a = JsonSerializer.Serialize(data);
             return new OkObjectResult(a);
         }
 
+<<<<<<< HEAD
         [HttpPost("GetAvailableLocales")]
         [Route("GetAvailableLocales")]
         public IActionResult GetAvailableLocales()
@@ -102,6 +132,30 @@ namespace WebApplication2.Controllers
 
 
     }
+=======
+
+
+        [HttpPost("GetAvailableLanguages")]
+        [Route("GetAvailableLanguages")]
+        public IActionResult GetAvailableLanguages()
+        {
+
+
+
+            var data = new Dictionary<string, string>
+            {
+                {"en", "en-English" },
+                {"tr", "tr-Türkçe" },
+                {"fr", "tr-France" },
+            };
+
+            var a = JsonSerializer.Serialize(data);
+            return new OkObjectResult(a);
+        }
+    }
+
+
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
 
 
     public class LocalizationRequest
@@ -109,6 +163,7 @@ namespace WebApplication2.Controllers
         public string locale { get; set; }
     }
 
+<<<<<<< HEAD
     public class TranslationModel
     {
         public TranslationModel(string locale, string key, string value)
@@ -134,5 +189,8 @@ namespace WebApplication2.Controllers
         public string localeKey { get; set; }
         public string localeName { get; set; }
     }
+=======
+
+>>>>>>> a5c10c6d8269981476f6a711a9e559710a445d76
 
 }

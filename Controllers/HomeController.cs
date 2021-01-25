@@ -14,11 +14,16 @@ namespace WebApplication2.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("GetMenu")]
         [Route("GetMenu")]
         public IActionResult GetMenu()
         {
             var isAuth = User;
+
+            isAuth.Claims.Where(q => q.Type == "BusinessItem").ToList().ForEach(t =>
+            {
+                Console.WriteLine(t);
+            });
 
             var m1 = new MenuModel {
                 id = 1,
@@ -36,9 +41,9 @@ namespace WebApplication2.Controllers
                 typeId = 2,
                 url = "/about2"
             };
-            
 
-            return new OkObjectResult(new { ok = true, data = new List<MenuModel> { m1, m2 } });
+            var response = JsonSerializer.Serialize(new List<MenuModel> { m1, m2 } );
+            return new OkObjectResult(response);
         }
     }
 
